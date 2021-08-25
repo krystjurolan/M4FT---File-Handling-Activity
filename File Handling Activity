@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+int main()
+{
+    FILE *Fpointer;
+    int append , counter;
+    char location[30] , input[60];
+
+    printf("Input the file location: ");
+    scanf("%s", location);
+
+    printf("Input how many lines to be appended: ");
+    scanf("%d", &append);
+
+
+    Fpointer = fopen(location, "a" );
+
+
+    if(Fpointer == NULL){
+
+        printf("Unable to create or open the file\n");
+        main();
+    } else {
+        for( counter = 0 ; counter <= append ; counter++ ){
+            gets(input);
+            //fputs( input , Fpointer );
+            //fputs("\n", Fpointer);
+
+            fprintf( Fpointer , "%s\n" , input);
+        }
+        fclose(Fpointer);
+    }
+
+    return 0;
+}
